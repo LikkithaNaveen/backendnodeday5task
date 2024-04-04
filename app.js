@@ -10,11 +10,7 @@ const userRouter = require("./routes/user");
 const app = express();
 app.use(express.json())
 app.use(morgan('dev'))
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*',cors);
-  // Add other CORS headers if needed
-  next();
-});
+app.use(cors())
 app.use("/api/user", userRouter);
 app.use(errorHandler)
 
